@@ -26,14 +26,14 @@ resource "aws_vpc_peering_connection" "default" {
 
 # 2. Route from Requester VPC to Accepter VPC
 
-resource "aws_route" "requester_to_accepter" {
+resource "aws_route" "public_to_accepter" {
   count = var.is_peering_required ? 1 : 0
   route_table_id            = aws_route_table.public.id
   destination_cidr_block    = data.aws_vpc.default.cidr_block
   vpc_peering_connection_id = aws_vpc_peering_connection.default[count.index].id
 }
 
-resource "aws_route" "requester_to_accepter" {
+resource "aws_route" "private_to_accepter" {
   count = var.is_peering_required ? 1 : 0
   route_table_id            = aws_route_table.private.id
   destination_cidr_block    = data.aws_vpc.default.cidr_block
@@ -41,7 +41,7 @@ resource "aws_route" "requester_to_accepter" {
 }
 
 
-resource "aws_route" "requester_to_accepter" {
+resource "aws_route" "database_to_accepter" {
   count = var.is_peering_required ? 1 : 0
   route_table_id            = aws_route_table.database.id
   destination_cidr_block    = data.aws_vpc.default.cidr_block
