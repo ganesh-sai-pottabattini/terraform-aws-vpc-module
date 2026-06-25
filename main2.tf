@@ -1,4 +1,4 @@
-# In this code, i am creating two identical set of subnets for each tier. so 
+# In this code, i am creating two identical set of subnets for each tier. so,
 # total 1 VPC, 1 IGw, 6 subnets in 2 avaialability zones [ each az has 3 subnets - public, private, database ]
 # 5 route tables [ 1- public , 2 - private , 2- database ], 
 # 5 route table associations [ 1 public rt to 2 public subnets , 2 rt to 2 private subnets respectively ,2 rt to 2 databases subnets respectively ]
